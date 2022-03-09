@@ -1,109 +1,144 @@
-.body{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-.container{
-    background-color:#e7e0b4;
-    display:flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
+.container {
+  background-color: #e7e0b4;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
 }
-.navbar{
-    height: 60px;
-    background-color: rgb(37, 156, 33);
-    width: inherit;
-    padding: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    text-shadow: 1px 1px 1px #000;
-    font-family: 'Courier New', Courier, monospace;
-}
-/* .left{
-    color: whitesmoke;
-
-} */
-
-div h3{
-    font-size: 35px;
-    color: whitesmoke;
+.navbar {
+  height: 60px;
+  background-color: rgb(37, 156, 33);
+  width: inherit;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-shadow: 1px 1px 1px #000;
+  font-family: "Courier New", Courier, monospace;
 }
 
-/*
-.middle{
-    padding: 10px;
-    color: white;
-    display: inline-block;
-    position: absolute;
+div h3 {
+  font-size: 35px;
+  color: whitesmoke;
 }
-.right{
-    margin: 100px;
-    position: absolute;
-    height: 15px;
-    top: -77px;
-    right: -39px;
-*/ 
 
-.btn{
-    height: 40px;
-    width: 40px;
-    color: white;
-    font-size: 25px;
-    border-radius: 50%;
-    border-width: 0;
-    background-color: rgb(55, 172, 51);
-    
+.btn {
+  height: 40px;
+  width: 40px;
+  color: white;
+  font-size: 25px;
+  border-radius: 50%;
+  border-width: 0;
+  background-color: rgb(55, 172, 51);
 }
 .actions {
-    margin: 15px;
+  margin: 15px;
 }
 
-.actions span{
-    font-size: 25px;
-    margin: 5px;
-    font-family: monospace;
-    font-weight: 400; 
-    font-style: italic;
+.actions span {
+  font-size: 25px;
+  margin: 5px;
+  font-family: monospace;
+  font-weight: 400;
+  font-style: italic;
 }
 
-.right input{
-    height: 20px;
-    padding: 10px;
+.right input {
+  height: 20px;
+  padding: 10px;
 }
-button:hover{
-    background-color: rgb(142, 247, 82);
-    cursor: pointer;
-    /* box-shadow: 0px 1px 7px 1px black; */
+button:hover {
+  background-color: rgb(142, 247, 82);
+  cursor: pointer;
+  /* box-shadow: 0px 1px 7px 1px black; */
 }
-input:hover{
-    background-color: #ddd;
-    color: rgb(0, 0, 0);
-}
-
-.note-library{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    
+input:hover {
+  background-color: #ddd;
+  color: rgb(0, 0, 0);
 }
 
-.note{
-    height: 250px;
-    width: 230px;
-    margin: 10px;
-    background-color: pink;
-    padding: 15px;
-    font-family: monospace;
-    font-size: larger;
+.note-library {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.note:hover{
-    cursor: pointer;
-    background-color: rgb(255, 183, 195);
+.note {
+  height: 250px;
+  width: 230px;
+  margin: 10px;
+  background-color: pink;
+  padding: 15px;
+  font-family: monospace;
+  font-size: larger;
 }
 
+.note:hover {
+  cursor: pointer;
+  background-color: rgb(255, 183, 195);
+}
+
+/*Modal Styles*/
+
+.modal-backdrop {
+  display: none;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  position: fixed;
+}
+
+.modal {
+  background-color: white;
+  margin: 20% auto;
+  width: 400px;
+}
+
+.modal-header {
+  background-color: rgb(37, 156, 33);
+  color: white;
+  text-shadow: 1px 1px 1px #000;
+  height: 30px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-body {
+  padding: 5px;
+}
+
+.modal-body input {
+  width: 100%;
+  border: none;
+  height: 150px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  background-color: lightgreen;
+  width: 100%;
+}
+
+.modal-footer button {
+  padding: 7px;
+  margin: 5px;
+  background-color: hotpink;
+  color: white;
+  border: 0;
+}
+
+.modal-footer button:hover {
+  background-color: rgb(205, 138, 50);
+}

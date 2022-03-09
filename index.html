@@ -6,12 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>THE NOTES APP</title>
     <link rel="stylesheet" href="index.css" />
+    <script src="index.js"></script>
   </head>
   <body>
     <div class="container">
       <nav class="navbar">
         <div class="left">
-          <img src="./images/noted-logo.png" alt="site logo" width="90" height="70"/>
+          <img
+            src="./images/noted-logo.png"
+            alt="site logo"
+            width="90"
+            height="70"
+          />
         </div>
         <div class="middle">
           <h3>NOTED</h3>
@@ -21,27 +27,38 @@
         </div>
       </nav>
       <div class="actions">
-          <span>Add a new note</span>
+        <span>Add a new note</span>
         <button class="btn">+</button>
       </div>
+
       <!-- Adding Dummy Data -->
       <section class="note-library">
         <div class="note">
-            <p>
-                this is my first sample note
-            </p>
+          <p>this is my first sample note</p>
         </div>
         <div class="note">
-            <p>
-                hocus pocus bitch lopus ipuim
-            </p>
+          <p>hocus pocus bitch lopus ipuim</p>
         </div>
         <div class="note">
-            <p>
-                THIRD NOTE BITCH
-            </p>
+          <p>THIRD NOTE BITCH</p>
         </div>
       </section>
+
+      <!-- Adding Modal-->
+      <div id="modal-backdrop" class="modal-backdrop">
+        <div class="modal">
+          <div class="modal-header">
+            <h4>Edit Note</h4>
+          </div>
+          <div class="modal-body">
+            <input value="note body sample" />
+          </div>
+          <div class="modal-footer">
+            <button class="btnSave">Save</button>
+            <button class="btnCancel">Cancel</button>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
