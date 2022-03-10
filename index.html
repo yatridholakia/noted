@@ -7,7 +7,6 @@
     <title>THE NOTES APP</title>
     <link rel="stylesheet" href="index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <script src="index.js"></script>
   </head>
   <body>
     <div class="container">
@@ -29,12 +28,12 @@
       </nav>
       <div class="actions">
         <span>Add a new note</span>
-        <button class="btn">+</button>
+        <button class="btn" id="btnAdd">+</button>
       </div>
 
       <!-- Adding Dummy Data -->
-      <section class="note-library">
-        <div class="note">
+      <section class="note-library" id="note-library">
+        <!-- <div class="note">
           <p>this is my first sample note</p>
         </div>
         <div class="note">
@@ -42,17 +41,17 @@
         </div>
         <div class="note">
           <p>THIRD NOTE BITCH</p>
-        </div>
+        </div> -->
       </section>
 
       <!-- Adding Modal-->
       <div id="modal-backdrop" class="modal-backdrop">
         <div class="modal">
           <div class="modal-header">
-            <h4>Edit Note</h4>
+            <h4 id="modal-title">Edit Note</h4>
           </div>
           <div class="modal-body">
-            <input value="note body sample" />
+            <input value="note body sample" id="modal-body-input"/>
           </div>
           <div class="modal-footer">
             <button class="btnSave">Save</button>
@@ -61,5 +60,6 @@
         </div>
       </div>
     </div>
+    <script src="index.js"></script>
   </body>
 </html>
