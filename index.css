@@ -2,12 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Architects Daughter', cursive;
 }
 .container {
   background-color: #e7e0b4;
   display: flex;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
 }
@@ -37,6 +38,8 @@ div h3 {
   border-radius: 50%;
   border-width: 0;
   background-color: rgb(55, 172, 51);
+  transition-property: background-color;
+  transition-duration: 0.53s;
 }
 .actions {
   margin: 15px;
@@ -51,17 +54,25 @@ div h3 {
 }
 
 .right input {
-  height: 20px;
-  padding: 10px;
+  height: 40px;
+  padding: 15px;
+  border-radius: 9px;
+  transition-property: background-color;
+  transition-duration: 0.53s;
+  border: 3px solid lavender;
 }
 button:hover {
-  background-color: rgb(142, 247, 82);
+  /* background-color: rgb(142, 247, 82); */
   cursor: pointer;
+  background-color: rgb(226, 36, 23);
+  color: whitesmoke;
+
   /* box-shadow: 0px 1px 7px 1px black; */
 }
 input:hover {
-  background-color: #ddd;
-  color: rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  
 }
 
 .note-library {
@@ -76,20 +87,26 @@ input:hover {
   width: 230px;
   margin: 10px;
   background-color: pink;
+  box-shadow: 2px 2px 0px 1px rgba(0, 0, 0, 0.2);
   padding: 15px;
   font-family: monospace;
   font-size: larger;
+  transition-property: background-color;
+  transition-duration: 0.53s;
 }
 
 .note:hover {
   cursor: pointer;
-  background-color: rgb(255, 183, 195);
+  /* background-color: rgb(255, 183, 195); */
+  background-color: lightcoral;
+  color: whitesmoke;
+  box-shadow: 2px 2px 0px 1px rgb(248, 248, 248);
 }
 
 /*Modal Styles*/
 
 .modal-backdrop {
-  display: none;
+  /* display: none; */
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -116,6 +133,8 @@ input:hover {
 
 .modal-body {
   padding: 5px;
+  transition-property: background-color;
+  transition-duration: 0.90s;
 }
 
 .modal-body input {
@@ -139,6 +158,6 @@ input:hover {
   border: 0;
 }
 
-.modal-footer button:hover {
+/* .modal-footer button:hover,:focus {
   background-color: rgb(205, 138, 50);
-}
+} */
