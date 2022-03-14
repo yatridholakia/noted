@@ -101,6 +101,7 @@ input:hover {
   height: 250px;
   width: 230px;
   margin: 10px;
+  overflow: hidden;
   background-color: pink;
   box-shadow: 2px 2px 0px 1px rgba(0, 0, 0, 0.2);
   padding: 15px;
@@ -165,6 +166,10 @@ input:hover {
   width: 100%;
   border: none;
   height: 150px;
+  font-size: large;
+}
+.modal-body input:invalid{
+  border: 3px solid tomato;
 }
 
 .modal-footer {

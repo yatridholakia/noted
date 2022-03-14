@@ -23,6 +23,18 @@ const NOTES = [
   },
 ];
 
+const deleteNoteHandler = (e)=>{
+  e.stopPropagation();
+  const noteToDelete = e.target.parentNode;
+  const noteLibrary = document.querySelector("#note-library");
+  const allNotes = document.querySelectorAll(".note");
+  const selectedNote = [...allNotes].filter(
+    (note) => note.dataset.key === noteToDelete.dataset.key
+  );
+  noteLibrary.removeChild(selectedNote[0]);
+  // console.log(allNotes);
+  // console.log(noteToDelete);
+}
 //-------------------------------------------------------------------
 
 //adding notes manually to DOM
@@ -31,9 +43,11 @@ NOTES.forEach((note) => {
   const newNoteDiv = document.createElement("div");
   newNoteDiv.classList.add("note");
   newNoteDiv.dataset.key = note.id;
-  const closeBtn = document.createElement("button");
-  closeBtn.innerText = "x";
-  newNoteDiv.append(closeBtn);
+  const deleteBtn = document.createElement("button");
+  deleteBtn.innerText = "x";
+  deleteBtn.classList.add("delete");
+  deleteBtn.addEventListener('click', (deleteNoteHandler));
+  newNoteDiv.append(deleteBtn);
   noteLibrary.append(newNoteDiv);
   const pTag = document.createElement("p");
   pTag.innerText = note.data;
@@ -64,7 +78,7 @@ const openEditModal = (e) => {
   const note = e.srcElement;
   noteInQuestion = note.dataset.key;
   modalTitle.innerText = EDIT_NOTE;
-  modalInput.value = note.innerText;
+  modalInput.value = note.children[1].innerText;
   backdrop.style.display = "block";
 };
 
@@ -73,18 +87,12 @@ const closeModal = () => {
   noteInQuestion = null;
 };
 
-const deleteNoteHandler = ()=>{
-  console.log(note)
-  // let Id = note.dataset.key;
-  // document.removeChild(Id);
-}
 
 const saveButtonHandler = () => {
   const modalInput = document.querySelector("#modal-body-input");
 
   if (modalInput.value.trim().length < 1) {
-    //do something
-    closeModal();
+    modalInput.classList.add("invalid");
     return;
   }
   if (noteInQuestion != null) {
@@ -98,11 +106,16 @@ const saveButtonHandler = () => {
     const editedNote = [...notes].filter(
       (note) => note.dataset.key === noteInQuestion
     );
-    editedNote[0].firstChild.innerText = modalInput.value;
+    editedNote[0].children[1].innerText = modalInput.value;
   } else {
     // const noteLibrary = document.querySelector("#note-library");
     const newNoteDiv = document.createElement("div");
     newNoteDiv.classList.add("note");
+    const deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "x";
+    deleteBtn.classList.add("delete");
+    deleteBtn.addEventListener('click', (deleteNoteHandler));
+    newNoteDiv.append(deleteBtn);
     newNoteDiv.dataset.key = noteId++;
     const pTag = document.createElement("p");
     pTag.innerText = modalInput.value;
@@ -123,7 +136,4 @@ notes.forEach((note) => {
 closeButton.addEventListener("click", closeModal);
 saveButton.addEventListener("click", saveButtonHandler);
 addNewNoteButton.addEventListener("click", addNewNoteHandler);
-notes.forEach((note) =>{
-  closeBtn.addEventListener("click", deleteNoteHandler);
-});
 //-----------------------------------------
