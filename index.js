@@ -14,10 +14,12 @@ const NOTES = [
   {
     id: noteId++,
     data: "This is a second new note",
+
   },
   {
     id: noteId++,
     data: "This is a third new note",
+
   },
 ];
 
@@ -29,6 +31,10 @@ NOTES.forEach((note) => {
   const newNoteDiv = document.createElement("div");
   newNoteDiv.classList.add("note");
   newNoteDiv.dataset.key = note.id;
+  const closeBtn = document.createElement("button");
+  closeBtn.innerText = "x";
+  newNoteDiv.append(closeBtn);
+  noteLibrary.append(newNoteDiv);
   const pTag = document.createElement("p");
   pTag.innerText = note.data;
   newNoteDiv.append(pTag);
@@ -66,6 +72,12 @@ const closeModal = () => {
   backdrop.style.display = "none";
   noteInQuestion = null;
 };
+
+const deleteNoteHandler = ()=>{
+  console.log(note)
+  // let Id = note.dataset.key;
+  // document.removeChild(Id);
+}
 
 const saveButtonHandler = () => {
   const modalInput = document.querySelector("#modal-body-input");
@@ -111,4 +123,7 @@ notes.forEach((note) => {
 closeButton.addEventListener("click", closeModal);
 saveButton.addEventListener("click", saveButtonHandler);
 addNewNoteButton.addEventListener("click", addNewNoteHandler);
+notes.forEach((note) =>{
+  closeBtn.addEventListener("click", deleteNoteHandler);
+});
 //-----------------------------------------

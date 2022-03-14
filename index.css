@@ -53,16 +53,31 @@ div h3 {
   font-style: italic;
 }
 
-.right input {
+/* .right input {
   height: 40px;
   padding: 15px;
   border-radius: 9px;
   transition-property: background-color;
   transition-duration: 0.53s;
   border: 3px solid lavender;
+}  */
+
+.right a{
+  color: white;
+  text-decoration: none;
+  transition-property: background-color;
+  transition-duration: 0.53s;
+  position: relative;
+  margin-right: 30px;
+}
+.right a:hover{
+  background-color: rgb(156, 199, 162);
+  border-radius: 4px;
+  padding: 5px;
+  text-decoration: underline;
 }
 button:hover {
-  /* background-color: rgb(142, 247, 82); */
+  background-color: rgb(142, 247, 82);
   cursor: pointer;
   background-color: rgb(226, 36, 23);
   color: whitesmoke;
@@ -97,7 +112,7 @@ input:hover {
 
 .note:hover {
   cursor: pointer;
-  /* background-color: rgb(255, 183, 195); */
+  background-color: rgb(255, 183, 195);
   background-color: lightcoral;
   color: whitesmoke;
   box-shadow: 2px 2px 0px 1px rgb(248, 248, 248);
@@ -112,12 +127,21 @@ input:hover {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
   position: fixed;
+  overflow: auto;
 }
 
 .modal {
   background-color: white;
   margin: 20% auto;
-  width: 400px;
+  width: 30%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2),0 7px 20px 0 rgba(0, 0, 0, 0.17) ;
+  animation-name: modal;
+  animation-duration: 1s;
+
+}
+@keyframes modal{
+  from{opacity: 0;}
+  to{opacity: 1;}
 }
 
 .modal-header {
@@ -151,11 +175,21 @@ input:hover {
 }
 
 .modal-footer button {
-  padding: 7px;
-  margin: 5px;
+  padding: 10px;
+  margin: 10px;
   background-color: hotpink;
+  position: relative;
+  margin: 8px 9px;
+  border-radius: 3px;
   color: white;
   border: 0;
+  transition-property: background-color;
+  transition-duration: 0.53s;
+}
+
+.modal-footer button:hover{
+  background-color: tomato;
+  border-radius: 6px;
 }
 
 /* .modal-footer button:hover,:focus {
