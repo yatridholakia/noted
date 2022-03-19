@@ -51,6 +51,8 @@ div h3 {
 
 .btn:hover{
   transform: rotate(22deg);
+  cursor: pointer;
+  background-color: tomato;
 }
 
 .actions {
