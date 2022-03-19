@@ -14,50 +14,16 @@ const NOTES = [
   {
     id: noteId++,
     data: "This is a second new note",
-
   },
   {
     id: noteId++,
     data: "This is a third new note",
-
   },
 ];
 
-const deleteNoteHandler = (e)=>{
-  e.stopPropagation();
-  const noteToDelete = e.target.parentNode;
-  const noteLibrary = document.querySelector("#note-library");
-  const allNotes = document.querySelectorAll(".note");
-  const selectedNote = [...allNotes].filter(
-    (note) => note.dataset.key === noteToDelete.dataset.key
-  );
-  noteLibrary.removeChild(selectedNote[0]);
-  // console.log(allNotes);
-  // console.log(noteToDelete);
-}
-//-------------------------------------------------------------------
-
-//adding notes manually to DOM
-const noteLibrary = document.querySelector("#note-library");
-NOTES.forEach((note) => {
-  const newNoteDiv = document.createElement("div");
-  newNoteDiv.classList.add("note");
-  newNoteDiv.dataset.key = note.id;
-  const deleteBtn = document.createElement("button");
-  deleteBtn.innerText = "x";
-  deleteBtn.classList.add("delete");
-  deleteBtn.addEventListener('click', (deleteNoteHandler));
-  newNoteDiv.append(deleteBtn);
-  noteLibrary.append(newNoteDiv);
-  const pTag = document.createElement("p");
-  pTag.innerText = note.data;
-  newNoteDiv.append(pTag);
-  noteLibrary.append(newNoteDiv);
-});
-//---------------------------------------------------------------------
-
 //featching elements
 const modalTitle = document.querySelector("#modal-title");
+const noteLibrary = document.querySelector("#note-library");
 const backdrop = document.querySelector("#modal-backdrop");
 const notes = document.querySelectorAll(".note");
 const closeButton = document.querySelector(".btnCancel");
@@ -65,20 +31,36 @@ const saveButton = document.querySelector(".btnSave");
 const addNewNoteButton = document.querySelector("#btnAdd");
 //----------------------------------------------------------------------
 
+const deleteNoteHandler = (e) => {
+  e.stopPropagation();
+  const noteToDelete = e.target.parentNode;
+  const allNotes = document.querySelectorAll(".note");
+  const selectedNote = [...allNotes].filter(
+    (note) => note.dataset.key === noteToDelete.dataset.key
+  );
+  noteLibrary.removeChild(selectedNote[0]);
+};
+//-------------------------------------------------------------------
+
 //functions and Event Handlers
 const addNewNoteHandler = () => {
   modalTitle.innerText = ADD_NEW_NOTE;
   const modalInput = document.querySelector("#modal-body-input");
+  modalInput.classList.remove("invalid");
   modalInput.value = "";
   backdrop.style.display = "block";
 };
 
 const openEditModal = (e) => {
   const modalInput = document.querySelector("#modal-body-input");
+  console.log(modalInput.value);
+  modalInput.classList.remove("invalid");
   const note = e.srcElement;
+  console.log("NOTE in OPEN EDIT MODAL: " + note);
   noteInQuestion = note.dataset.key;
   modalTitle.innerText = EDIT_NOTE;
   modalInput.value = note.children[1].innerText;
+  console.log(note.children);
   backdrop.style.display = "block";
 };
 
@@ -86,7 +68,6 @@ const closeModal = () => {
   backdrop.style.display = "none";
   noteInQuestion = null;
 };
-
 
 const saveButtonHandler = () => {
   const modalInput = document.querySelector("#modal-body-input");
@@ -107,20 +88,30 @@ const saveButtonHandler = () => {
       (note) => note.dataset.key === noteInQuestion
     );
     editedNote[0].children[1].innerText = modalInput.value;
-  } else {
+  } 
+  else {
     // const noteLibrary = document.querySelector("#note-library");
     const newNoteDiv = document.createElement("div");
     newNoteDiv.classList.add("note");
     const deleteBtn = document.createElement("button");
     deleteBtn.innerText = "x";
     deleteBtn.classList.add("delete");
-    deleteBtn.addEventListener('click', (deleteNoteHandler));
+    deleteBtn.addEventListener("click", deleteNoteHandler);
     newNoteDiv.append(deleteBtn);
     newNoteDiv.dataset.key = noteId++;
     const pTag = document.createElement("p");
     pTag.innerText = modalInput.value;
     newNoteDiv.append(pTag);
     noteLibrary.append(newNoteDiv);
+     console.log("P TAG: " + pTag.innerText);
+     console.log(newNoteDiv.children);
+    // console.log(modalInput.value);
+    newNoteDiv.addEventListener("mouseenter", () => {
+      deleteBtn.style.display = "block";
+    });
+    newNoteDiv.addEventListener("mouseleave", () => {
+      deleteBtn.style.display = "none";
+    });
     newNoteDiv.addEventListener("click", openEditModal);
   }
 
@@ -129,10 +120,34 @@ const saveButtonHandler = () => {
 
 //-----------------------------------------------------------
 
-//setting event listeners
-notes.forEach((note) => {
-  note.addEventListener("click", openEditModal);
+//adding notes manually to DOM
+NOTES.forEach((note) => {
+  const newNoteDiv = document.createElement("div");
+  newNoteDiv.classList.add("note");
+  newNoteDiv.dataset.key = note.id;
+  const deleteBtn = document.createElement("button");
+  deleteBtn.innerText = "x";
+  deleteBtn.classList.add("delete");
+  deleteBtn.addEventListener("click", deleteNoteHandler);
+  newNoteDiv.append(deleteBtn);
+  const pTag = document.createElement("p");
+  pTag.innerText = note.data;
+  newNoteDiv.append(pTag);
+  newNoteDiv.addEventListener("click", openEditModal);
+  newNoteDiv.addEventListener("mouseenter", () => {
+    deleteBtn.style.display = "block";
+  });
+  newNoteDiv.addEventListener("mouseleave", () => {
+    deleteBtn.style.display = "none";
+  });
+  noteLibrary.append(newNoteDiv);
 });
+
+//---------------------------------------------------------------------
+//setting event listeners
+// notes.forEach((note) => {
+//   note.addEventListener("click", openEditModal);
+// });
 closeButton.addEventListener("click", closeModal);
 saveButton.addEventListener("click", saveButtonHandler);
 addNewNoteButton.addEventListener("click", addNewNoteHandler);
