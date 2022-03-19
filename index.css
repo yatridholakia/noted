@@ -48,6 +48,11 @@ div h3 {
   transition-property: background-color;
   transition-duration: 0.53s;
 }
+
+.btn:hover{
+  transform: rotate(22deg);
+}
+
 .actions {
   margin: 15px;
 }
@@ -177,6 +182,7 @@ input:hover {
   width: max-content;
   height: 150px;
   font-size: large;
+  word-wrap: inherit;
 }
 .modal-body textarea.invalid{
   border: 3px solid tomato;
