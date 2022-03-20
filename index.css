@@ -213,6 +213,7 @@ input:hover {
 .modal-footer button:hover{
   background-color: tomato;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 .delete{

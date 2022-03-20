@@ -41,7 +41,6 @@ const deleteNoteHandler = (e) => {
   noteLibrary.removeChild(selectedNote[0]);
 };
 //-------------------------------------------------------------------
-
 //functions and Event Handlers
 const addNewNoteHandler = () => {
   modalTitle.innerText = ADD_NEW_NOTE;
@@ -53,14 +52,11 @@ const addNewNoteHandler = () => {
 
 const openEditModal = (e) => {
   const modalInput = document.querySelector("#modal-body-input");
-  console.log(modalInput.value);
   modalInput.classList.remove("invalid");
-  const note = e.srcElement;
-  console.log("NOTE in OPEN EDIT MODAL: " + note);
+  const note = e.currentTarget;
   noteInQuestion = note.dataset.key;
   modalTitle.innerText = EDIT_NOTE;
   modalInput.value = note.children[1].innerText;
-  console.log(note.children);
   backdrop.style.display = "block";
 };
 
@@ -103,9 +99,6 @@ const saveButtonHandler = () => {
     pTag.innerText = modalInput.value;
     newNoteDiv.append(pTag);
     noteLibrary.append(newNoteDiv);
-     console.log("P TAG: " + pTag.innerText);
-     console.log(newNoteDiv.children);
-    // console.log(modalInput.value);
     newNoteDiv.addEventListener("mouseenter", () => {
       deleteBtn.style.display = "block";
     });
